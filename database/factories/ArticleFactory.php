@@ -6,7 +6,7 @@ $factory->define(App\Article::class, function (Faker $faker) {
     return [
         'cicle_id' => App\Cicle::all()->random()->id,
         'title' => $faker->sentence,
-        'img' => $faker->image,//?????
+        'img' => $faker->sentence,//?????
         'description' => $faker->paragraph,
     ];
 });
