@@ -15,13 +15,13 @@ class CreateAppliedsTable extends Migration
     {
         Schema::create('applieds', function (Blueprint $table) {
             $table->engine = "InnoDB";      
-            $table->BigInteger('id');
+            $table->bigIncrements('id');
             $table->unsignedBigInteger('offer_id');
             $table->foreign('offer_id')->references('id')->on('offers');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->timestamp('created_at');
-            $table->timestamp('updated_at');
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
             
         });
     }

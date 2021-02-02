@@ -15,13 +15,13 @@ class CreateRequirementsTable extends Migration
     {
         Schema::create('requirements', function (Blueprint $table) {
             $table->engine = "InnoDB";      
-            $table->BigInteger('id');
-            $table->unsignedBigInteger('offer_id');
-            $table->foreign('offer_id')->references('id')->on('offers');
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('offers_id');
+            $table->foreign('offers_id')->references('id')->on('offers');
             $table->string('headline');
             $table->string('description');
-            $table->timestamp('created_at');
-            $table->timestamp('updated_at');
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
             
         });
     }
