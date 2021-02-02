@@ -16,8 +16,8 @@ class CreateRequirementsTable extends Migration
         Schema::create('requirements', function (Blueprint $table) {
             $table->engine = "InnoDB";      
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('offers_id');
-            $table->foreign('offers_id')->references('id')->on('offers');
+            $table->unsignedBigInteger('offer_id');
+            $table->foreign('offer_id')->references('id')->on('offers');
             $table->string('headline');
             $table->string('description');
             $table->timestamp('created_at')->useCurrent();

@@ -16,8 +16,8 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->engine = "InnoDB";      
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('cicles_id');
-            $table->foreign('cicles_id')->references('id')->on('cicles');
+            $table->unsignedBigInteger('cicle_id');
+            $table->foreign('cicle_id')->references('id')->on('cicles');
             $table->string('name');
             $table->string('surname');
             $table->string('email')->unique();

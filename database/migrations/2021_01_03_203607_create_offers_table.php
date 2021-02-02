@@ -16,8 +16,8 @@ class CreateOffersTable extends Migration
         Schema::create('offers', function (Blueprint $table) {
             $table->engine = "InnoDB";      
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('cicles_id');
-            $table->foreign('cicles_id')->references('id')->on('cicles');
+            $table->unsignedBigInteger('cicle_id');
+            $table->foreign('cicle_id')->references('id')->on('cicles');
             $table->string('headline');
             $table->string('description');
             $table->date('date_max');
