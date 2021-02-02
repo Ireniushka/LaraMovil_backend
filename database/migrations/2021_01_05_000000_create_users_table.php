@@ -20,12 +20,13 @@ class CreateUsersTable extends Migration
             $table->foreign('cicles_id')->references('id')->on('cicles');
             $table->string('name');
             $table->string('surname');
-            $table->string('email');
+            $table->string('email')->unique();
+            $table->string('email_verified_at');
             $table->string('password');
-            $table->string('type');
-            $table->Integer('num_offer_aplied');
-            $table->string('remember_token');
-            $table->timestamp('email_verified_at');
+            $table->string('type')->default('normal_user');
+            $table->integer('num_offer_aplied');
+            $table->rememberToken();
+            $table->string('email_verified_at');
             $table->timestamp('created_at');
             $table->timestamp('updated_at');
 

@@ -20,8 +20,8 @@ class CreateOffersTable extends Migration
             $table->foreign('cicles_id')->references('id')->on('cicles');
             $table->string('headline');
             $table->string('description');
-            $table->timestamp('date_max');
-            $table->Integer('num_candidates');
+            $table->date('date_max');
+            $table->integer('num_candidates');
             $table->timestamp('created_at');
             $table->timestamp('updated_at');
 
