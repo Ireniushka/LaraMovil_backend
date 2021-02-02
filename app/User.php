@@ -9,13 +9,24 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    protected $table = 'users';
+
+    /* **Poner por cada relacion con metodo usuario en su modelo(ejemplo en applied)
+
+    public function fichas()
+    {
+        return $this->hasMany('App\Worksheet');
+    } 
+    */
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'surname', 'email', 'email_verified_at', 'password', 'remember_token', 
+        'cicles_id', 'num_offer_aplied',   
     ];
 
     /**
