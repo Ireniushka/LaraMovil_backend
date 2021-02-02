@@ -15,14 +15,14 @@ class CreateArticlesTable extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->engine = "InnoDB";      
-            $table->BigInteger('id');
+            $table->bigIncrements('id');
             $table->unsignedBigInteger('cicles_id');
             $table->foreign('cicles_id')->references('id')->on('cicles');
             $table->string('title');
             $table->string('img');
             $table->string('description');
-            $table->timestamp('created_at');
-            $table->timestamp('updated_at');
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
             
         });
     }

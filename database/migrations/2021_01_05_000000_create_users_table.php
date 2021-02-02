@@ -15,7 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->engine = "InnoDB";      
-            $table->BigInteger('id');
+            $table->bigIncrements('id');
             $table->unsignedBigInteger('cicles_id');
             $table->foreign('cicles_id')->references('id')->on('cicles');
             $table->string('name');
@@ -26,9 +26,8 @@ class CreateUsersTable extends Migration
             $table->string('type')->default('normal_user');
             $table->integer('num_offer_aplied');
             $table->rememberToken();
-            $table->string('email_verified_at');
-            $table->timestamp('created_at');
-            $table->timestamp('updated_at');
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
 
         });
     }

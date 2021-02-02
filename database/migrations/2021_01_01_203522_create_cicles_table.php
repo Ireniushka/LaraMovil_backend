@@ -18,8 +18,8 @@ class CreateCiclesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('img');
-            $table->timestamp('created_at');
-            $table->timestamp('updated_at');
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
         });
     }
 
