@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
         factory(\App\Article::class, 10)->create();
         factory(\App\Offer::class, 10)->create();
         factory(\App\Requirement::class, 10)->create();
-        factory(\App\User::class)->create(['email' => 'admin@damin.com', 'password'=>bcrypt('123456'), 'type'=>'ad']);
+        factory(\App\User::class)->create(['name' => 'Administrador', 'email' => 'admin@damin.com', 'password'=>bcrypt('123456'), 'type'=>'admin user']);
         factory(\App\Applied::class, 10)->create();
         
     }

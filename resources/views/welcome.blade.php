@@ -5,12 +5,13 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Salesianos San Ignacio</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <style>
             html, body {
                 background-color: #fff;
@@ -62,34 +63,78 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+
+            /* Float four columns side by side */
+            .column {
+                float: left;
+                width: 33%;
+                padding: 0 10px;
+            }
+
+            .boton{
+                width:150px;
+                margin-top:3px;
+                margin-left:-80px; 
+            }
+
+            /* Remove extra left and right margins, due to padding */
+            .row {margin: 0 -5px;}
+
+            /* Clear floats after the columns */
+            .row:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+
+            /* Responsive columns */
+            @media screen and (max-width: 600px) {
+            .column {
+                width: 100%;
+                display: block;
+                margin-top: 0;
+            }
+            }
+
+            /* Style the counter cards */
+            .card {
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+                padding: 8px;
+                text-align: center;
+                background-color: #f1f1f1;
+            }
         </style>
     </head>
     <body>
+        @extends('layouts.app')
+
+        @section('content')
         <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Salesianos San Ignacio
                 </div>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+                @Logged()
+                    <div class="row flex-center">                     
+                        <div class="column">
+                            <div class="card">
+                                <h3>Menu principal:</h3>
+                                <ul>
+                                    <ol><a href="users" class="boton btn btn-success" >Gestión de usuarios</a></ol>
+                                    <ol><a href="emails" class="boton btn btn-success">Envío de e-mails</a></ol>
+                                    <ol><a href="informes" class="boton btn btn-success">Generación de informes</a></ol>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                @else
+                    @include('partials.login_link', ['message' => __("Inicie sesión para trabajar")])
+                @endLogged
             </div>
         </div>
+        @endsection
     </body>
 </html>
