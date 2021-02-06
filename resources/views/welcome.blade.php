@@ -73,7 +73,7 @@
             }
 
             .boton{
-                width:150px;
+                width:250px;
                 margin-top:3px;
                 margin-left:-80px; 
             }
@@ -121,11 +121,11 @@
                     <div class="row flex-center">                     
                         <div class="column">
                             <div class="card">
-                                <h3>Menu principal:</h3>
+                                <h2>Menu principal:</h2>
                                 <ul>
-                                    <ol><a href="users" class="boton btn btn-success" >Gestión de usuarios</a></ol>
-                                    <ol><a href="emails" class="boton btn btn-success">Envío de e-mails</a></ol>
-                                    <ol><a href="informes" class="boton btn btn-success">Generación de informes</a></ol>
+                                    <ol><a href="users" class="boton btn btn-success" style="font-size:20px">Gestión de usuarios</a></ol>
+                                    <ol><a href="emails" class="boton btn btn-success" style="font-size:20px">Envío de e-mails</a></ol>
+                                    <ol><a href="informes" class="boton btn btn-success" style="font-size:20px">Generación de informes</a></ol>
                                 </ul>
                             </div>
                         </div>
