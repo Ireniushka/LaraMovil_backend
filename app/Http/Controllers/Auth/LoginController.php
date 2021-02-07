@@ -26,7 +26,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo;
+    protected $redirectTo='/';
 
     /**
      * Create a new controller instance.
@@ -39,16 +39,23 @@ class LoginController extends Controller
              
     }
 
-     /**
+     /*
      * Get a validator for an incoming login request.
      *
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
-     */
+     
     protected function validator(array $data)
     {
         return Validator::make($data, [
             'type' => 'admin user'
         ]);
+    }*/
+
+    public function redirectPath(){
+        if(auth()->user()->type === 'admin user') { //comprueba si es un administrador
+            return '/';
+        }
+            return 'noAuthorized';
     }
 }

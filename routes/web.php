@@ -15,6 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('noAuthorized', function () {
+    return view('auth/noAuth');
+});
+
+
 Auth::routes();
 
 
