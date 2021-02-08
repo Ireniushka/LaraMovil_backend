@@ -68,7 +68,7 @@
             /* Float four columns side by side */
             .column {
                 float: left;
-                width: 33%;
+                width: 43%;
                 padding: 0 10px;
             }
 
@@ -125,7 +125,7 @@
                                 <ul>
                                     <ol><a href="users" class="boton btn btn-success" style="font-size:20px">Gestión de usuarios</a></ol>
                                     <ol><a href="emails" class="boton btn btn-success" style="font-size:20px">Envío de e-mails</a></ol>
-                                    <ol><a href="informes" class="boton btn btn-success" style="font-size:20px">Generación de informes</a></ol>
+                                    <ol><a href="generador" class="boton btn btn-success" style="font-size:20px">Generación de informes</a></ol>
                                 </ul>
                             </div>
                         </div>

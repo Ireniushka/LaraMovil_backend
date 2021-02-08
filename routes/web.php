@@ -11,6 +11,8 @@
 |
 */
 
+Auth::routes();
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -20,6 +22,13 @@ Route::get('noAuthorized', function () {
 });
 
 
-Auth::routes();
+Route::get('generador', function () {
+    return view('generadorPdf/index');
+});
 
+Route::resource('alumnos', 'AppliedController');
+Route::resource('ofertas', 'OfferController');
+
+Route::get('/{offer}/informe', 'AppliedController@informe');
+Route::get('/{date}/informe', 'AppliedController@informe'); #??
 
