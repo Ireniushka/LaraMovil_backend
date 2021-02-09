@@ -29,6 +29,7 @@ Route::get('generador', function () {
 Route::resource('alumnos', 'AppliedController');
 Route::resource('ofertas', 'OfferController');
 
-Route::get('/{offer}/informe', 'AppliedController@informe');
-Route::get('/{date}/informe', 'AppliedController@informe'); #??
+
+Route::get('informe/{offerid}', 'AppliedController@informe')->name('informeAlumno');
+
 
