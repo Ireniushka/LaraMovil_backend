@@ -21,9 +21,9 @@ class AppliedController extends Controller
 
         //return $offer;
 
-        $pdf = \PDF::loadFile('http://www.github.com');
-        //$pdf = \PDF::loadView('generadorPdf/informes', compact('offer'));
-        return $pdf->stream('github.pdf');
+        //$pdf = \PDF::loadFile('http://www.github.com');
+        $pdf = \PDF::loadView('generadorPdf/informes', compact('offer'));
+        return $pdf->stream();
        
         //return view('generadorPdf/informes', compact('offer'));
 
