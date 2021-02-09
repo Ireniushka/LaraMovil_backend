@@ -32,3 +32,5 @@ Route::resource('ofertas', 'OfferController');
 Route::get('/{offer}/informe', 'AppliedController@informe');
 Route::get('/{date}/informe', 'AppliedController@informe'); #??
 
+Route::get('/enviarEmail', 'emailController@index');
+Route::get('/emailEnviado', 'emailController@store');
