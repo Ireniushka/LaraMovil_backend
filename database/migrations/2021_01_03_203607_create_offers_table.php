@@ -21,7 +21,6 @@ class CreateOffersTable extends Migration
             $table->string('headline');
             $table->string('description');
             $table->date('date_max');
-            $table->integer('num_candidates');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
 

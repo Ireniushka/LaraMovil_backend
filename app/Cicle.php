@@ -11,4 +11,8 @@ class Cicle extends Model
     protected $fillable = [
         'name', 'img',
     ];
+
+    public function offers(){
+        return $this->hasMany(Offer::class);
+    }
 }

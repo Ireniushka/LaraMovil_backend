@@ -2,11 +2,14 @@
 <style>
     .boton{
         background-color:orange;
-        border-radius: 5px;
+        padding: 5px;
+        border-radius: 6px;
+        border: 2px solid;
     }
     .volver{
         margin: 20px;
     }
+
 </style>
 
 @section('content')
@@ -22,7 +25,7 @@
                         <input type="text" size=30>
                         <input type="submit" value="Consultar" class="boton">
                         |
-                        <input type="submit" value="Generar pdf" class="boton">
+                        <a href="{{ route('informeOferta') }}" class="boton">Generar pdf</a>
                     </form>
                     <table class ="table table-light">
                         <thead class="thead-ligth">
@@ -41,9 +44,9 @@
                                 <tr>
                                     <td>{{$offer->headline}}</td>
                                     <td>{{$offer->description}}</td>
-                                    <td>{{$offer->cicle_id}}</td>
+                                    <td>{{$offer->cicle->name}}</td>
                                     <td>{{$offer->date_max}}</td>
-                                    <td>{{$offer->num_candidates}}</td>
+                                    <td>{{$offer->applieds()->count()}}</td>
                                 </tr>
                             @endforeach
                         @endif

@@ -26,7 +26,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name', 'surname', 'email', 'email_verified_at', 'password', 'remember_token', 
-        'cicle_id', 'num_offer_aplied',   
+        'cicle_id',  
     ];
 
     /**
@@ -37,4 +37,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function applieds()
+    {
+        return $this->hasMany(Applied::class);
+    }
+
+    public function cicle(){
+        return $this->belongsTo(Cicle::class, 'cicle_id');
+    }
 }

@@ -8,6 +8,5 @@ $factory->define(App\Offer::class, function (Faker $faker) {
         'headline' => $faker->paragraph,
         'description' => $faker->paragraph,
         'date_max' => $faker->date,
-        'num_candidates' => $faker->randomDigit,
     ];
 });

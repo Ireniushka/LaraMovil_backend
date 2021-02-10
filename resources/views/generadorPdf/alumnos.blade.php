@@ -1,5 +1,20 @@
 @extends('layouts.app')
 
+<style>
+    .boton{
+        background-color:orange;
+        font-size: 12px;
+        padding: 5px;
+        border-radius: 6px;
+        border: 2px solid;
+        text-decoration: none;
+    }
+    .volver{
+        margin: 20px;
+    }
+
+</style>
+
 @section('content')
 <div class="container">
     <div class="row">
@@ -36,11 +51,11 @@
                                 <tr>
                                     <td>{{$offer->headline}}</td>
                                     <td>{{$offer->description}}</td>
-                                    <td>{{$offer->cicle_id}}</td>
+                                    <td>{{$offer->cicle->name}}</td>
                                     <td>{{$offer->date_max}}</td>
-                                    <td>{{$offer->num_candidates}}</td>
-                                    <td>  
-                                        <a href="{{ route('informeAlumno', $offer) }}" class="btn btn-warning">
+                                    <td>{{$offer->applieds()->count()}}</td>
+                                    <td width="100">  
+                                        <a href="{{ route('informeAlumno', $offer) }}" class="boton">
                                             Generar pdf
                                         </a>                                
                                     </td>
