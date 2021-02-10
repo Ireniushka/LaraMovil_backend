@@ -124,13 +124,12 @@
                                 <h2>Menu principal:</h2>
                                 <ul>
                                     <ol><a href="users" class="boton btn btn-success" style="font-size:20px">Gestión de usuarios</a></ol>
-                                    <ol><a href="emails" class="boton btn btn-success" style="font-size:20px">Envío de e-mails</a></ol>
+                                    <ol><a href="{{ url('/enviarEmail') }}" class="boton btn btn-success" style="font-size:20px">Envío de e-mails</a></ol>
                                     <ol><a href="generador" class="boton btn btn-success" style="font-size:20px">Generación de informes</a></ol>
                                 </ul>
                                 
                             </div>
                         </div>
-                        <a href="{{ url('/enviarEmail') }}">Enviar Email</a>
                     </div>
                 @else
                     @include('partials.login_link', ['message' => __("Inicie sesión para trabajar")])
