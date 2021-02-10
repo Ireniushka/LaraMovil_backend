@@ -35,3 +35,6 @@ Route::get('informe/{offerid}', 'AppliedController@informe')->name('informeAlumn
 
 Route::get('/enviarEmail', 'emailController@index');
 Route::get('/emailEnviado', 'emailController@store');
+
+
+Route::get('users','UserController@index');
