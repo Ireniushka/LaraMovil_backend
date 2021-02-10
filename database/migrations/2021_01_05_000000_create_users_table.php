@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('email_verified_at');
             $table->string('password');
+            $table->tinyInteger('activated');
             $table->string('type')->default('normal user');
             $table->rememberToken();
             $table->timestamp('created_at')->useCurrent();

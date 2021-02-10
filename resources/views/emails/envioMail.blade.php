@@ -19,7 +19,9 @@
         <label>{{'Contenido'}}</label>
         <br>
         <textarea cols=70 rows=10></textarea>
-        </br>
+        <br>
+        <input type="file" name="file">
+        <br>
 
         <input type="submit" value="Enviar" class="boton_agregar"></input>
         </br>

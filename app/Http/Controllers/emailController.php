@@ -38,14 +38,56 @@ class emailController extends Controller
      */
     public function store(Request $request)
     {
+
+        // $data = request()->validate([	            
+        //     'email'=>['required','para'],	            
+        //     'subject'=>['required','asunto'],	            
+        //     'message'=>['required','contenido'],	            
+        //     'image'=>['required','mimes:jpg,png,jpeg,gif,svg,pdf'],	       
+        // ]);
+        
+        // $emailData = array(	            
+        //     'email'=>$data['email'],	            
+        //     'subject'=>$data['subject'],	            
+        //     'message'=>$data['message'],	            
+        //     'image'=>$data['image']	        
+        // );
+
+        // view()->share(compact('emailData'));	        
+        // $url = $request->file('file');
+
+        // $sendMail = Mail::send('vistaEmail',$emailData,function ($message) use($data,$url){	            
+        //     $email = $data['email'];	            
+        //     $subject = $data['subject'];	            
+        //     $message->to($email);	            
+        //     $message->subject($subject);	            
+        //     $message->attach(	                
+        //         $url->getRealPath(),array(	                    
+        //             'as'=>$url->getClientOriginalName(),	                    
+        //             'mime'=>$url->getMimeType()	                
+        //             )	            
+        //         );	            
+        //         $message->from(env('MAIL_USERNAME'));	        
+        //     });	        
+        // if ($sendMail){	            
+        //     Alert::error('Error');	            
+        //     return redirect()->back();	        
+        // }	        
+        // else{	            
+        //     Alert::success('Success');	            
+        //     return redirect()->back();	        
+        // }	    
+
         $data = [
             'emailto' => $request->get('para'),
             'subject' => $request->get('asunto'),
             'content' => $request->get('contenido'),
+            // 'file' => $request->file('file'),
         ];
         Mail::send('vistaEmail', $data, function ($message) use($data) {
             $message->from('albertuki115@gmail.com');
             $message->to($data['emailto'])->subject($data['subject']);
+            // $message->attach($data['file']);
         });
         return back();
     }
