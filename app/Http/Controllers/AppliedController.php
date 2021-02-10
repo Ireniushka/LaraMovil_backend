@@ -15,10 +15,17 @@ class AppliedController extends Controller
         return view('generadorPdf/alumnos', compact('cicles', 'offers'));
     }
 
-    function informe(Request $offer){
+    function informe(Request $request, $offerid){
+
+        $offer = Offer::find($offerid);
+
+        //return $offer;
+
+        //$pdf = \PDF::loadFile('http://www.github.com');
         $pdf = \PDF::loadView('generadorPdf/informes', compact('offer'));
-        // Para crear un pdf en el navegador usaremos la siguiente línea 
         return $pdf->stream();
+       
+        //return view('generadorPdf/informes', compact('offer'));
 
     }
 

@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('email_verified_at');
             $table->string('password');
+            $table->tinyInteger('activated');
             $table->string('type')->default('normal user');
             $table->integer('num_offer_aplied');
             $table->rememberToken();

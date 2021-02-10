@@ -29,8 +29,17 @@ Route::get('generador', function () {
 Route::resource('alumnos', 'AppliedController');
 Route::resource('ofertas', 'OfferController');
 
-Route::get('/{offer}/informe', 'AppliedController@informe');
-Route::get('/{date}/informe', 'AppliedController@informe'); #??
+
+Route::get('informe/{offerid}', 'AppliedController@informe')->name('informeAlumno');
+
 
 Route::get('/enviarEmail', 'emailController@index');
 Route::get('/emailEnviado', 'emailController@store');
+
+
+Route::get('users','UserController@index');
+Route::get('usersAct','UserController@desactivados');
+Route::get('usersDct','UserController@activados');
+
+Route::patch('users1/{id}','UserController@validar')->name('StatusOn');
+Route::patch('users2/{id}','UserController@invalidar')->name('StatusOff');

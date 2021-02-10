@@ -40,7 +40,7 @@
                                     <td>{{$offer->date_max}}</td>
                                     <td>{{$offer->num_candidates}}</td>
                                     <td>  
-                                        <a href="{$offer}/informe" class="btn btn-warning">
+                                        <a href="{{ route('informeAlumno', $offer) }}" class="btn btn-warning">
                                             Generar pdf
                                         </a>                                
                                     </td>
