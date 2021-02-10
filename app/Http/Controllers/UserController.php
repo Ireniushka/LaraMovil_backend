@@ -13,4 +13,16 @@ class UserController extends Controller
     
         return view('users.users', compact('users'));
     }
+
+    public function activados(){ //VISTA ACTIVOS
+        $users = User::where('activated','=',0)->get();
+    
+        return view('users.usersAct', compact('users'));
+    }
+    
+    public function desactivados(){ //VISTA DESACTIVOS
+        $users = User::where('activated','=',1)->get();
+    
+        return view('users.usersDct',compact('users'));
+    }
 }

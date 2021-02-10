@@ -4,8 +4,8 @@
         <a href="{{ url('/') }}" class="btn btn-sm btn-dark"><-- Home</a>
 
         <div class="btn-group" role="group" aria-label="Basic example">
-            <a href="users" class="btn btn-sm btn-dark botones botones:hover disabled"> All </a>
-            <a href="usersDct" class="btn btn-sm btn-dark botones botones:hover">Activated</a>
+            <a href="users" class="btn btn-sm btn-dark botones botones:hover"> All </a>
+            <a href="usersDct" class="btn btn-sm btn-dark botones botones:hover disabled">Activated</a>
             <a href="usersAct" class="btn btn-sm btn-dark botones botones:hover">Desactivated</a>
         </div>
 
