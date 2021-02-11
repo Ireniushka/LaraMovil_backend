@@ -26,7 +26,7 @@ class CreateUsersTable extends Migration
             $table->tinyInteger('activated');
             $table->string('type')->default('normal user');
             $table->integer('num_offer_aplied');
-            $table->rememberToken();
+            $table->rememberToken('api_token');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
 
