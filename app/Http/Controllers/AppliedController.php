@@ -22,7 +22,7 @@ class AppliedController extends Controller
         //return $offer;
 
         //$pdf = \PDF::loadFile('http://www.github.com');
-        $pdf = \PDF::loadView('generadorPdf/informes', compact('offer'));
+        $pdf = \PDF::loadView('generadorPdf/informesAlumnos', compact('offer'));
         return $pdf->stream();
        
         //return view('generadorPdf/informes', compact('offer'));

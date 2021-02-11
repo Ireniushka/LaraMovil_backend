@@ -31,6 +31,7 @@ Route::resource('ofertas', 'OfferController');
 
 
 Route::get('informe/{offerid}', 'AppliedController@informe')->name('informeAlumno');
+Route::get('informe', 'OfferController@informe')->name('informeOferta');
 
 
 Route::get('/enviarEmail', 'emailController@index');
