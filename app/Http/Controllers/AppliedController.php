@@ -5,28 +5,42 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Cicle;
 use App\Offer;
+use App\User;
 
 class AppliedController extends Controller
 {
-    function index()
+    public function index()
     {
         $cicles = Cicle::all();
         $offers = Offer::paginate(5);
         return view('generadorPdf/alumnos', compact('cicles', 'offers'));
     }
 
-    function informe(Request $request, $offerid){
+    public function informe($offerid){
 
         $offer = Offer::find($offerid);
+            
+        $users = User::whereIn('id', function ($query) use ($offerid){
+            $query->select('user_id')->from('applieds')->where('offer_id', $offerid);
+        })->get();
 
-        //return $offer;
-
-        //$pdf = \PDF::loadFile('http://www.github.com');
-        $pdf = \PDF::loadView('generadorPdf/informesAlumnos', compact('offer'));
+        $pdf = \PDF::loadView('generadorPdf/informesAlumnos', compact('users', 'offer'));
         return $pdf->stream();
-       
-        //return view('generadorPdf/informes', compact('offer'));
+    }
 
+    public function consulta(Request $request){
+
+        if(request()->select == 'todos')
+        {
+            $offers = Offer::paginate(5);
+        }
+        else{
+            $offers = Offer::where('cicle_id', request()->select)->paginate(5);
+        }
+        
+        $cicles = Cicle::all();
+
+        return view('generadorPdf/alumnos', compact('cicles', 'offers'));
     }
 
 }

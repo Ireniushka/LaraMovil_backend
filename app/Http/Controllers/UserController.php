@@ -28,10 +28,10 @@ class UserController extends Controller
 
     public function validar($id) //CAMBIAR ACTIVADOS
     {
-    $users = User::where('id',$id);
+        $users = User::where('id',$id);
 
-    if($users->where('activated','=',1)->get()){
-        $users = User::where('id',$id)->update(['activated'=>0]);
+        if($users->where('activated','=',1)->get()){
+            $users = User::where('id',$id)->update(['activated'=>0]);
     }
     
     return redirect()->back();
@@ -40,13 +40,13 @@ class UserController extends Controller
 
     public function invalidar($id) //CAMBIAR ACTIVADOS
     {
-    $users = User::where('id',$id);
+        $users = User::where('id',$id);
 
-    if($users->where('activated','=',0)->get()){
-        $users = User::where('id',$id)->update(['activated'=>1]);
-    }
-    
-    return redirect()->back();
+        if($users->where('activated','=',0)->get()){
+            $users = User::where('id',$id)->update(['activated'=>1]);
+        }
+        
+        return redirect()->back();
 
     }
 }

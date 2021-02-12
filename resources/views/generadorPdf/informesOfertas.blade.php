@@ -22,32 +22,35 @@
         </table>   
         <br>
         <br>
-        <table class ="table table-light">
-            <thead class="thead-ligth">
-                <tr>
-                    <th>Oferta</th>
-                    <th>Descripción</th>
-                    <th>Ciclo</th>
-                    <th>Fecha</th>
-                    <th>Alumnos inscritos</th>
-                </tr>
-            </thead>
+        @if($offers->count())
 
-            <tbody>
-            @if($offers)
-                @foreach($offers as $offer)
+            <table class ="table table-light">
+                <thead class="thead-ligth">
                     <tr>
-                        <td>{{$offer->headline}}</td>
-                        <td>{{$offer->description}}</td>
-                        <td>{{$offer->cicle->name}}</td>
-                        <td>{{$offer->date_max}}</td>
-                        <td>{{$offer->applieds()->count()}}</td>
+                        <th>Oferta</th>
+                        <th>Descripción</th>
+                        <th>Ciclo</th>
+                        <th>Fecha</th>
+                        <th>Inscritos</th>
                     </tr>
-                @endforeach
-            @endif
-            </tbody>
-        </table>
-        </div>
+                </thead>
+
+                <tbody>
+                    @foreach($offers as $offer)
+                        <tr>
+                            <td>{{$offer->headline}}</td>
+                            <td>{{$offer->description}}</td>
+                            <td>{{$offer->cicle->name}}</td>
+                            <td>{{$offer->date_max}}</td>
+                            <td>{{$offer->applieds()->count()}}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>   
+
+        @else
+            <p>--NO HAY OFERTAS PARA ESTE CURSO ESCOLAR--</p>
+        @endif       
 
     </body>
 </html>

@@ -24,7 +24,7 @@
         <br>
        <strong>Oferta seleccionada:</strong>
         <br>
-        <table class ="table table-light">
+        <table class ="table table-light" style="width:100%">
             <tr>
                 <th>Oferta</th>
                 <th>Descripción</th>
@@ -42,33 +42,37 @@
         </table>
         <br>
         <br>
-        <strong>Alumnos inscritos:</strong>
-        <br>
-        <table class ="table table-light">
-            <thead class="thead-ligth">
-                <tr>
-                    <th>Nombre</th>
-                    <th>Apellidos</th>
-                    <th>Ciclo</th>
-                    <th>Email</th>
-                    <th>Inscrito en</th>
-                </tr>
-            </thead>
+        @if($users->count())
 
-            <tbody>
-            @if($users)
-                @foreach($users as $user)
+            <strong>Alumnos inscritos:</strong>
+            <br>
+            <table class ="table table-light" style="width:100%">
+                
+                <thead class="thead-ligth">
                     <tr>
-                        <td>{{$user->name}}</td>
-                        <td>{{$user->surname}}</td>
-                        <td>{{$user->cicle->name}}</td>
-                        <td>{{$user->email}}</td>
-                        <td>{{$user->applieds()->count()}} ofertas</td>
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
+                        <th>Ciclo</th>
+                        <th>Email</th>
+                        <th>Inscrito en</th>
                     </tr>
-                @endforeach
-            @endif
-            </tbody>
-        </table>
-        
+                </thead>
+
+                <tbody>
+                    @foreach($users as $user)
+                        <tr>
+                            <td>{{$user->name}}</td>
+                            <td>{{$user->surname}}</td>
+                            <td>{{$user->cicle->name}}</td>
+                            <td>{{$user->email}}</td>
+                            <td>{{$user->applieds()->count()}} ofertas</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+
+        @else
+            <p>--NO SE HAN INSCRITO ALUMNOS A LA OFERTA--</p>
+        @endif
     </body>
 </html>
