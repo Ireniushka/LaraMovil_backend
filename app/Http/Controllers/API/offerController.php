@@ -4,10 +4,10 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Offer;
 use Validator;
-use App\Article;
 
-class articleController extends Controller
+class offerController extends Controller
 {
     public $successStatus = 200;
 
@@ -18,11 +18,11 @@ class articleController extends Controller
      */
     public function index()
     {
-        $articles = Article::all();
+        $offers = Offer::all();
 
-        return response()->json(['Articulos' => $articles->toArray()], $this->successStatus);
+        return response()->json(['Ofertas' => $offers->toArray()], $this->successStatus);
     }
-    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -52,9 +52,9 @@ class articleController extends Controller
      */
     public function show($id)
     {
-        $articles = Article::where('cicle_id',$id)->get();
+        $offers = Offer::where('cicle_id',$id)->get();
 
-        return response()->json(['Articulos' => $articles->toArray()], $this->successStatus);
+        return response()->json(['Ofertas' => $offers->toArray()], $this->successStatus);
     }
 
     /**

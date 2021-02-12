@@ -22,5 +22,9 @@ Route::post('login', 'API\RegisterController@login');
 
 Route::middleware('auth:api')->group( function () {
     Route::resource('articlesApi', 'API\articleController');
+    Route::resource('offersApi', 'API\offerController');
+    Route::resource('appliedApi', 'API\appliedController');
+    Route::resource('ciclesApi', 'API\ciclesController');
+    Route::resource('usersApi', 'API\usersController');
     });
 

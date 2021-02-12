@@ -5,9 +5,9 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator;
-use App\Article;
+use App\Applied;
 
-class articleController extends Controller
+class appliedController extends Controller
 {
     public $successStatus = 200;
 
@@ -18,11 +18,9 @@ class articleController extends Controller
      */
     public function index()
     {
-        $articles = Article::all();
-
-        return response()->json(['Articulos' => $articles->toArray()], $this->successStatus);
+        //
     }
-    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -41,7 +39,19 @@ class articleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+
+        $validator = Validator::make($input, [
+            'offer_id' => 'required',
+            'user_id' => 'required'
+        ]);
+
+        if($validator->fails()){
+            return response()->json(['error' => $validator->errors()], 401);
+        }
+
+        $applied = Applied::create($input);
+        return response()->json(['Producto' => $applied->toArray()], $this->successStatus);
     }
 
     /**
@@ -52,9 +62,7 @@ class articleController extends Controller
      */
     public function show($id)
     {
-        $articles = Article::where('cicle_id',$id)->get();
-
-        return response()->json(['Articulos' => $articles->toArray()], $this->successStatus);
+        //
     }
 
     /**
@@ -88,6 +96,10 @@ class articleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $applied = Applied::find($id);
+        $applied->delete();
+
+        return response()->json(['Applied' => $applied->toArray()], $this->successStatus);
+
     }
 }
