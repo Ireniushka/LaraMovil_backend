@@ -20,38 +20,47 @@
                 <div class="panel-heading"><strong>Ofertas por curso escolar</strong></div>
 
                 <div class="panel-body">
-                    <form>
+                    <form action="{{ route('consultaCurso')}}" method="post" with="auto">
+                    {{ csrf_field() }}
                         <label>Indique los años del curso escolar:  </label>
-                        <input type="text" size=30>
-                        <input type="submit" value="Consultar" class="boton">
-                        |
-                        <a href="{{ route('informeOferta') }}" class="boton">Generar pdf</a>
-                    </form>
-                    <table class ="table table-light">
-                        <thead class="thead-ligth">
-                            <tr>
-                                <th>Oferta</th>
-                                <th>Descripción</th>
-                                <th>Ciclo</th>
-                                <th>Fecha</th>
-                                <th>Inscritos</th>
-                            </tr>
-                        </thead>
+                        <input type="text" size=30 placeholder="Ejemplo: 2019-2020" required autofocus>
 
-                        <tbody>
-                        @if($offers)
-                            @foreach($offers as $offer)
+                        <button type="submit" class="boton" >Consultar</button> 
+                        <!-- <input type="submit" value="Consultar" class="boton"> -->
+                        <a href="{{ route('informeOferta') }}"><button class="boton" >Generar pdf</button></a>
+                    </form>
+
+                    
+                    @if($offers->count())
+
+                        <table class ="table table-light">
+                            <thead class="thead-ligth">
                                 <tr>
-                                    <td>{{$offer->headline}}</td>
-                                    <td>{{$offer->description}}</td>
-                                    <td>{{$offer->cicle->name}}</td>
-                                    <td>{{$offer->date_max}}</td>
-                                    <td>{{$offer->applieds()->count()}}</td>
+                                    <th>Oferta</th>
+                                    <th>Descripción</th>
+                                    <th>Ciclo</th>
+                                    <th>Fecha</th>
+                                    <th>Inscritos</th>
                                 </tr>
-                            @endforeach
-                        @endif
-                        </tbody>
-                    </table>   
+                            </thead>
+
+                            <tbody>
+                                @foreach($offers as $offer)
+                                    <tr>
+                                        <td>{{$offer->headline}}</td>
+                                        <td>{{$offer->description}}</td>
+                                        <td>{{$offer->cicle->name}}</td>
+                                        <td>{{$offer->date_max}}</td>
+                                        <td>{{$offer->applieds()->count()}}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>   
+
+                    @else
+                        <p>--NO HAY OFERTAS PARA ESTE CURSO ESCOLAR--</p>
+                    @endif
+                    
                     <p>{{$offers->links()}}</p>           
                 </div>
 

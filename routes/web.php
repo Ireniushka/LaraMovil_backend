@@ -33,6 +33,8 @@ Route::resource('ofertas', 'OfferController');
 Route::get('informe/{offerid}', 'AppliedController@informe')->name('informeAlumno');
 Route::get('informe', 'OfferController@informe')->name('informeOferta');
 
+Route::post('alumnos','AppliedController@consulta')->name('consultaCiclo');
+Route::post('ofertas','OfferController@consulta')->name('consultaCurso');
 
 Route::get('/enviarEmail', 'emailController@index');
 Route::get('/emailEnviado', 'emailController@store');
