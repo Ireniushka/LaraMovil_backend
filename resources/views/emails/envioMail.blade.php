@@ -4,12 +4,12 @@
 <div class="container">
 
 @Logged()
-    <h2> <strong> Envio Mails </strong></h2>
-    <form action="{{ url('/emailEnviado')}}" method="get">
+    <h2> <strong> Envio de e-mails </strong></h2>
+    <form action="{{ url('/emailEnviado')}}" method="post">
         {{csrf_field()}}
         <label>{{'Para'}}</label>
         @foreach($users as $user)
-        <input type="checkbox" name="para[]" value="alberto.rgmb@gmail.com" size=55>
+        <input type="checkbox" name="para[]" value="irenerengelruiz@gmail.com" size=55>
         <label>{{$user->email}}</label>
         @endforeach
         </br>
@@ -18,7 +18,7 @@
         </br>
         <label>{{'Contenido'}}</label>
         <br>
-        <textarea cols=70 rows=10></textarea>
+        <textarea name="contenido" id="contenido" cols=70 rows=10></textarea>
         <br>
         <input type="file" name="file">
         <br>
@@ -26,7 +26,6 @@
         <input type="submit" value="Enviar" class="boton_agregar"></input>
         </br>
 
-        
     </form>
 
     </br>

@@ -23,14 +23,17 @@
                     <form action="{{ route('consultaCurso')}}" method="post" with="auto">
                     {{ csrf_field() }}
                         <label>Indique los años del curso escolar:  </label>
-                        <input type="text" size=30 placeholder="Ejemplo: 2019-2020" required autofocus>
+                        <input name="anios" type="text" size=30 placeholder="Ejemplo: 2019-2020" required autofocus pattern="(1|2)[0-9]{3}.(1|2)[0-9]{3}" title="Ejemplo: 2019-2020">
 
-                        <button type="submit" class="boton" >Consultar</button> 
-                        <!-- <input type="submit" value="Consultar" class="boton"> -->
-                        <a href="{{ route('informeOferta') }}"><button class="boton" >Generar pdf</button></a>
+                        <button type="submit" class="boton" >Generar pdf</button> 
                     </form>
 
                     
+                    @if(isset($message))
+                    <br>
+                    <p><span style="font-color=red">{{$message}}</span></p>
+                    @endif
+
                     @if($offers->count())
 
                         <table class ="table table-light">

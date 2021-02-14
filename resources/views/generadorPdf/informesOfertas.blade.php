@@ -24,6 +24,9 @@
         <br>
         @if($offers->count())
 
+            <p>Curso escolar: {{$curso}}</p>
+            <br>
+
             <table class ="table table-light">
                 <thead class="thead-ligth">
                     <tr>
@@ -49,7 +52,7 @@
             </table>   
 
         @else
-            <p>--NO HAY OFERTAS PARA ESTE CURSO ESCOLAR--</p>
+            <p>--NO HAY OFERTAS PARA EL CURSO ESCOLAR {{$curso}}--</p>
         @endif       
 
     </body>
