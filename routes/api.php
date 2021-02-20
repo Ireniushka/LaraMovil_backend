@@ -19,12 +19,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('register', 'API\RegisterController@register');
 Route::post('login', 'API\RegisterController@login');
+Route::resource('articles', 'API\articleController');
 
 Route::middleware('auth:api')->group( function () {
-    Route::resource('articlesApi', 'API\articleController');
-    Route::resource('offersApi', 'API\offerController');
-    Route::resource('appliedApi', 'API\appliedController');
-    Route::resource('ciclesApi', 'API\ciclesController');
-    Route::resource('usersApi', 'API\usersController');
+    
+    Route::resource('offers', 'API\offerController');
+    Route::resource('applied', 'API\appliedController');
+    Route::resource('cicles', 'API\ciclesController');
+    Route::resource('users', 'API\usersController');
     });
 

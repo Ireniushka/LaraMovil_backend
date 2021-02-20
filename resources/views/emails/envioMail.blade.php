@@ -5,7 +5,7 @@
 
 @Logged()
     <h2> <strong> Envio de e-mails </strong></h2>
-    <form action="{{ url('/emailEnviado')}}" method="post">
+    <form action="{{ url('/emailEnviado')}}" method="post" enctype=»multipart/form-data>
         {{csrf_field()}}
         <label>{{'Para'}}</label>
         @foreach($users as $user)

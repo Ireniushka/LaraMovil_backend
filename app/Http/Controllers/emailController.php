@@ -86,9 +86,10 @@ class emailController extends Controller
             'emailto' => $request->get('para'),
             'subject' => $request->get('asunto'),
             'content' => $request->get('contenido'),
-            'file' => $request->get('file'),
+            // 'file' => $request->file('file'),
         ];
-        Mail::send('vistaEmail', $data, function ($message) use($data) {
+        $url = $request->file('file');
+        Mail::send('vistaEmail', $data, function ($message) use($data,$url) {
             // $pdf = \PDF::loadFile($data['file']->$_GET->pathinfo);
             $message->from('albertuki115@gmail.com');
             $message->to($data['emailto'])->subject($data['subject']);
@@ -98,7 +99,7 @@ class emailController extends Controller
 
         echo "<script>alert('El e-mail fue enviado correctamente');</script>";
 
-        // dd($request);
+        // return $request->get('file');
         return view('welcome');
     }
 
