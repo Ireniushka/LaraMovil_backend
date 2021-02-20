@@ -13,20 +13,28 @@ class AppliedController extends Controller
     {
         $cicles = Cicle::all();
         $offers = Offer::paginate(5);
+
         return view('generadorPdf/alumnos', compact('cicles', 'offers'));
     }
 
     public function informe($offerid){
 
         $offer = Offer::find($offerid);
-            
-        $users = User::whereIn('id', function ($query) use ($offerid){
-            $query->select('user_id')->from('applieds')->where('offer_id', $offerid);
-        })->get();
 
-        $pdf = \PDF::loadView('generadorPdf/informesAlumnos', compact('users', 'offer'));
-        return $pdf->stream();
+        if($offer->applieds()->count() == 0){
+            return back()->with('alert', '');
+        }
+        else{
+            $users = User::whereIn('id', function ($query) use ($offerid){
+                $query->select('user_id')->from('applieds')->where('offer_id', $offerid);
+            })->get();
+    
+            $pdf = \PDF::loadView('generadorPdf/informesAlumnos', compact('users', 'offer'));
+            return $pdf->stream();
+        }
+
     }
+
 
     public function consulta(Request $request){
 

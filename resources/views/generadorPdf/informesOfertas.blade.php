@@ -22,38 +22,34 @@
         </table>   
         <br>
         <br>
-        @if($offers->count())
 
-            <p>Curso escolar: {{$curso}}</p>
-            <br>
+        <p>Curso escolar: {{$curso}}</p>
+        <br>
 
-            <table class ="table table-light">
-                <thead class="thead-ligth">
+        <table class ="table table-light">
+            <thead class="thead-ligth">
+                <tr>
+                    <th>Oferta</th>
+                    <th>Descripción</th>
+                    <th>Ciclo</th>
+                    <th>Fecha</th>
+                    <th>Inscritos</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach($offers as $offer)
                     <tr>
-                        <th>Oferta</th>
-                        <th>Descripción</th>
-                        <th>Ciclo</th>
-                        <th>Fecha</th>
-                        <th>Inscritos</th>
+                        <td>{{$offer->headline}}</td>
+                        <td>{{$offer->description}}</td>
+                        <td>{{$offer->cicle->name}}</td>
+                        <td>{{$offer->date_max}}</td>
+                        <td>{{$offer->applieds()->count()}}</td>
                     </tr>
-                </thead>
-
-                <tbody>
-                    @foreach($offers as $offer)
-                        <tr>
-                            <td>{{$offer->headline}}</td>
-                            <td>{{$offer->description}}</td>
-                            <td>{{$offer->cicle->name}}</td>
-                            <td>{{$offer->date_max}}</td>
-                            <td>{{$offer->applieds()->count()}}</td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>   
-
-        @else
-            <p>--NO HAY OFERTAS PARA EL CURSO ESCOLAR {{$curso}}--</p>
-        @endif       
+                @endforeach
+            </tbody>
+        </table>   
+    
 
     </body>
 </html>
