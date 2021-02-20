@@ -18,10 +18,8 @@ class RegisterController extends Controller
             'name' => 'required',
             'surname' => 'required',
             'email' => 'required|email',
-            'email_verified_at' => 'required|same:email',
             'password' => 'required',
             'c_password' => 'required|same:password',
-            'num_offer_aplied' => 'required',
         ]);
     
         if($validator->fails()) {
