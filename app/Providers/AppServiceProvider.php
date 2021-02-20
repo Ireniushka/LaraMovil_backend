@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         \Blade::if('Logged', function() {
-            return auth()->check();
+            return auth()->check() && auth()->user()->type == 'admin user';
         });
     }
 }

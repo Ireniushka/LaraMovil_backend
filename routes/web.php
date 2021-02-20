@@ -24,7 +24,7 @@ Route::get('noAuthorized', function () {
 
 Route::get('generador', function () {
     return view('generadorPdf/index');
-});
+})->middleware('admin');
 
 Route::resource('alumnos', 'AppliedController');
 Route::resource('ofertas', 'OfferController');

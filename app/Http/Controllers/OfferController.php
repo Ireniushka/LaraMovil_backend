@@ -7,6 +7,10 @@ use App\Offer;
 
 class OfferController extends Controller
 {
+    public function __construct(){
+        
+        $this->middleware('admin');
+    }
     // public $offers_class;
 
     // public function construct($param) {
