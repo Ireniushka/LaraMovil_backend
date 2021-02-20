@@ -9,6 +9,11 @@ use App\User;
 
 class AppliedController extends Controller
 {
+    public function __construct(){
+        
+        $this->middleware('admin');
+    }
+
     public function index()
     {
         $cicles = Cicle::all();

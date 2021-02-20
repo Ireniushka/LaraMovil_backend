@@ -9,7 +9,7 @@
         {{csrf_field()}}
         <label>{{'Para'}}</label>
         @foreach($users as $user)
-        <input type="checkbox" name="para[]" value="alberto.rgmb@gmail.com" size=55>
+        <input type="checkbox" name="para[]" value="{{$user->email}}" size=55>
         <label>{{$user->email}}</label>
         @endforeach
         </br>

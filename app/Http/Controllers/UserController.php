@@ -8,6 +8,10 @@ use App\User;
 
 class UserController extends Controller
 {
+    public function __construct(){
+        
+        $this->middleware('admin');
+    }
     function index(){ //VISTA USUARIOS
         $users = User::all();
     
