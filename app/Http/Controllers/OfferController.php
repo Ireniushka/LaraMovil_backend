@@ -31,9 +31,8 @@ class OfferController extends Controller
     {
         $offers = Offer::orderBy('date_max', 'DESC')->paginate(5);
         // $this->construct(1);
-        $message = "Se estan mostrando todas las ofertas existentes";
         // return $this->offers_class->all();
-        return view('generadorPdf/ofertas', compact('offers', 'message'));
+        return view('generadorPdf/ofertas', compact('offers'));
     }
 
     // public function informe(){
@@ -53,25 +52,36 @@ class OfferController extends Controller
         {
             $offers = Offer::whereYear('date_max', '>=', $anio1)->WhereYear('date_max', '<=', $anio2)->orderBy('date_max', 'DESC')->get();
 
-            $curso = request()->anios;
-            // $this->construct(request()->anios);
-            // $this->offers_class = Offer::whereYear('date_max', '>=', $anio1)->WhereYear('date_max', '<=', $anio2);
-            // return $this->offers_class->all();
+            if($offers->count()){
+                $curso = request()->anios;
+                // $this->construct(request()->anios);
+                // $this->offers_class = Offer::whereYear('date_max', '>=', $anio1)->WhereYear('date_max', '<=', $anio2);
+                // return $this->offers_class->all();
 
-            $pdf = \PDF::loadView('generadorPdf/informesOfertas', compact('offers', 'curso'));
-        
-            return $pdf->stream();
+                $pdf = \PDF::loadView('generadorPdf/informesOfertas', compact('offers', 'curso'));
+            
+                return $pdf->stream();
+            }
+            else{
+                $offers = Offer::orderBy('date_max', 'DESC')->paginate(5);
+
+                echo "<script>alert('No se puede generar pdf, no existen registros de ofertas');</script>";
+                
+                return view('generadorPdf/ofertas', compact('offers'));
+
+            }
+            
         }
+
 
         else
         {
             $offers = Offer::orderBy('date_max', 'DESC')->paginate(5);
 
             // $this->construct(1);
-
-            $message = "No ha introducido bien el curso escolar. Estas son todas las ofertas existentes:";
+            echo "<script>alert('Error. No ha introducido bien el curso escolar');</script>";
             
-            return view('generadorPdf/ofertas', compact('offers', 'message'));
+            return view('generadorPdf/ofertas', compact('offers'));
         }
 
 

@@ -53,7 +53,7 @@ class LoginController extends Controller
     }*/
 
     public function redirectPath(){
-        if(auth()->user()->type === 'admin user') { //comprueba si es un administrador
+        if(auth()->user()->type === 'admin user' && auth()->user()->activated === 1) { //comprueba si es un administrador
             return '/';
         }
             return 'noAuthorized';

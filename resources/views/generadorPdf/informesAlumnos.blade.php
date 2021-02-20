@@ -42,7 +42,6 @@
         </table>
         <br>
         <br>
-        @if($users->count())
 
             <strong>Alumnos inscritos:</strong>
             <br>
@@ -71,8 +70,5 @@
                 </tbody>
             </table>
 
-        @else
-            <p>--NO SE HAN INSCRITO ALUMNOS A LA OFERTA--</p>
-        @endif
     </body>
 </html>

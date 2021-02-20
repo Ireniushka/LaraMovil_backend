@@ -28,11 +28,6 @@
                         <button type="submit" class="boton" >Generar pdf</button> 
                     </form>
 
-                    
-                    @if(isset($message))
-                    <br>
-                    <p><span style="font-color=red">{{$message}}</span></p>
-                    @endif
 
                     @if($offers->count())
 

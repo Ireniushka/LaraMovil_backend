@@ -41,6 +41,13 @@
                         </div>
                     </form>
 
+                    @if(session()->has('alert'))
+                        <script>
+                            alert("No se puede generar informe ya que dicha oferta no posee registros de alumnos");
+                        </script>
+                        <!-- <p>{{session()->get('alert')}}</p> -->
+                    @endif 
+
                     @if($offers->count())
 
                         <table class ="table table-light">
@@ -65,7 +72,7 @@
                                         <td width="100">  
                                             <a href="{{ route('informeAlumno', $offer) }}" class="boton">
                                                 Generar pdf
-                                            </a>                                
+                                            </a>  
                                         </td>
                                     </tr>
                                 @endforeach
