@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Offer;
+use App\Cicle;
 
 class OfferController extends Controller
 {
@@ -29,7 +30,7 @@ class OfferController extends Controller
 
     public function index()
     {
-        $offers = Offer::orderBy('date_max', 'DESC')->paginate(5);
+        $offers = Offer::select()->orderBy('date_max', 'DESC')->paginate(5);
         // $this->construct(1);
         // return $this->offers_class->all();
         return view('generadorPdf/ofertas', compact('offers'));
@@ -50,7 +51,7 @@ class OfferController extends Controller
 
         if($anio2 == $anio1+1)
         {
-            $offers = Offer::whereYear('date_max', '>=', $anio1)->WhereYear('date_max', '<=', $anio2)->orderBy('date_max', 'DESC')->get();
+            $offers = Offer::whereYear('date_max', '>=', $anio1)->WhereYear('date_max', '<=', $anio2)->get();
 
             if($offers->count()){
                 $curso = request()->anios;
@@ -58,12 +59,14 @@ class OfferController extends Controller
                 // $this->offers_class = Offer::whereYear('date_max', '>=', $anio1)->WhereYear('date_max', '<=', $anio2);
                 // return $this->offers_class->all();
 
-                $pdf = \PDF::loadView('generadorPdf/informesOfertas', compact('offers', 'curso'));
+                $cicles = Cicle::all();
+
+                $pdf = \PDF::loadView('generadorPdf/informesOfertas', compact('offers', 'curso', 'cicles'));
             
                 return $pdf->stream();
             }
             else{
-                $offers = Offer::orderBy('date_max', 'DESC')->paginate(5);
+                $offers = Offer::select()->orderBy('date_max', 'DESC')->paginate(5);
 
                 echo "<script>alert('No se puede generar pdf, no existen registros de ofertas');</script>";
                 
